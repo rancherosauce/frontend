@@ -1,0 +1,10 @@
+{
+  "cacheDirectory": "./test",
+  "coverageDirectory": "./coverage",
+  "collectCoverage": true,
+  "collectCoverageFrom": ["../components/*.{js,jsx,ts,tsx}"],
+  "moduleDirectories": ["node_modules", "utils", "themes"],
+  "rootDir": ".",
+  "coveragePathIgnorePatterns": ["/node_modules/", "/dist/"],
+  "testPathIgnorePatterns": ["/node_modules/", "/dist/"]
+}
