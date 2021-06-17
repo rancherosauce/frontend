@@ -1,7 +1,7 @@
 import { supabase } from "utils/supabase";
 import { Box, Text } from "@chakra-ui/react";
 
-export default function Profile({ user }) {
+export default function ProfilePage({ user }) {
   return (
     <Box>
       <Text strong>{user.email}</Text>

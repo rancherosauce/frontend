@@ -9,6 +9,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useAuth } from "./AuthContext/AuthContext";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export default function SupabaseLogin() {
   const { signIn } = useAuth();
@@ -26,11 +27,13 @@ export default function SupabaseLogin() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <ThemeSwitcher />
       <FormControl isInvalid={errors.email}>
-        <FormLabel htmlFor="email">First email</FormLabel>
+        <FormLabel htmlFor="email">Email Address</FormLabel>
         <Input
           id="email"
           type="email"
+          w="20rem"
           {...register("email", {
             required: "This is required",
             minLength: { value: 4, message: "Minimum length should be 4" },

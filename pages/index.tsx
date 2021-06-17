@@ -1,17 +1,15 @@
-import { Box, Button, Container, Text, useColorMode } from "@chakra-ui/react";
+import { Box, Container, Text } from "@chakra-ui/react";
 import { getViewPaths, MDXVIEWS_PATH } from "utils/mdx";
 import { supabase } from "utils/supabase";
+import { ThemeSwitcher } from "components/ThemeSwitcher";
 import fs from "fs";
 import Link from "next/link";
 import matter from "gray-matter";
-import path from "path";
 import NavigationOverlay from "components/NavigationOverlay";
+import path from "path";
 import Waitlist from "components/Waitlist/Waitlist";
-import { ThemeSwitcher } from "components/ThemeSwitcher";
 
 export default function Index({ posts, user: passedUser }) {
-  const { colorMode, setColorMode } = useColorMode();
-
   return (
     <Box
       sx={{
@@ -24,24 +22,19 @@ export default function Index({ posts, user: passedUser }) {
       h="var(--100vh)"
       overflow="auto"
     >
-      <Container w="400px" centerContent my={24}>
+      <Box my={24} px={10}>
         <ThemeSwitcher />
         {!passedUser && <Waitlist />}
         {passedUser && <NavigationOverlay />}
         {posts?.length && (
-          <ul>
+          <ul style={{ listStyle: "none" }}>
             {posts.map((post) => (
               <li key={post.filePath}>
                 <Link
                   as={`/${post.filePath.replace(/\.mdx?$/, "")}`}
                   href={`/[slug]`}
                 >
-                  <Text
-                    as="a"
-                    fontSize="max(10vh,5rem)"
-                    lineHeight="1"
-                    cursor="pointer"
-                  >
+                  <Text as="a" fontSize="6xl" cursor="pointer">
                     {post.data.title}
                   </Text>
                 </Link>
@@ -49,13 +42,19 @@ export default function Index({ posts, user: passedUser }) {
             ))}
           </ul>
         )}
-      </Container>
+      </Box>
     </Box>
   );
 }
 
 export async function getServerSideProps({ req }) {
   const { user } = await supabase.auth.api.getUserByCookie(req);
+
+  // Redirect to Login, if no user was found
+  if (!user) {
+    return { props: {}, redirect: { destination: "/login", permanent: false } };
+  }
+
   const posts =
     user &&
     getViewPaths.map((filePath: any) => {

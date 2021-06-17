@@ -19,12 +19,9 @@ export function NavMenu({
       fontWeight="500"
       lineHeight="1"
       m="0"
-      pl="7"
       pointerEvents="auto"
-      pr="5"
     >
-      {showIcon && <HamburgerIcon w={8} h={8} m="0" mr="4" />}
-      Location
+      {showIcon && <HamburgerIcon w={8} h={8} m="0" mr="4" />}[ Model & Year ]
     </Box>
   );
 }

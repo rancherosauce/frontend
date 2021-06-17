@@ -33,9 +33,7 @@ export default function Overlay() {
         <Header />
       </GridItem>
       <GridItem colSpan={5} bg={SHOW_MASK ? MASK_COLOR : null} />
-      <GridItem colSpan={5} bg={SHOW_MASK ? MASK_COLOR : null}>
-        <Footer />
-      </GridItem>
+      <GridItem colSpan={5} bg={SHOW_MASK ? MASK_COLOR : null} />
     </Grid>
   );
 }

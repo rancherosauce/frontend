@@ -68,7 +68,7 @@ export const AuthProvider: FunctionComponent = ({ children }) => {
           title: user
             ? `Welcome, ${user.email}`
             : `Please check your email for the magic link`,
-          status: "success",
+          status: "info",
         });
       }
     } catch (error) {
