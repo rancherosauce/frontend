@@ -4,9 +4,6 @@
 - Baked-in optimizations
 - Authentication
 - Complex layouts using a text editor
-  ![Alt text](/relative/path/to/img.jpg?raw=true "Optional Title")
-
----
 
 ## Libraries
 
@@ -16,12 +13,14 @@
 - [Chakra UI](https://chakra-ui.com/)
 - [MDX](https://mdxjs.com/) to quickly create views (optional)
 
-### Optional Backend with [Supabase](https://supabase.io/)
+## _[Supabase](https://supabase.io/)_
 
 You'll need to be added to the org:
 
-1. signup for account
-2. accept invite
-3. navigate to settings and copy URL and KEY (see below)
+1. Create account, and accept invite to org
+1. Login, and go to Settings
+1. Copy URL and KEY (see below)
+1. Duplicate `.env.local.example` to `.env.local`
+1. Paste URL and KEY from to `.env.local`
 
-![INstalla](/public/keyURL.png?raw=true "Optional Title")
+![Url and Key](/public/keyURL.png?raw=true)
